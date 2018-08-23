@@ -105,6 +105,6 @@ venv.bak/
 /*.log
 *.pot
 *.pyc
-.sublime-project
-.sublime-workspace
+arc/arc.sublime-project
+arc/arc.sublime-workspace
 arc/tools/
