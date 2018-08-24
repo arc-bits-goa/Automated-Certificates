@@ -25,12 +25,17 @@ def cgpaConversion(modeladmin, request, queryset):
 def courseCompletion(modeladmin, request, queryset):
     for student in queryset:
         if(CourseCompletion.objects.filter(student=student).exists()==False):
-            cert=CourseCompletion.objects.create(student=student)   
+            cert=CourseCompletion.objects.create(student=student) 
+
+def englishMedium(modeladmin, request, queryset):
+    for student in queryset:
+        if(English.objects.filter(student=student).exists()==False):
+            cert=English.objects.create(student=student)   
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     search_fields = ['name', 'bitsId','username']
-    actions = [graduating,thesis,cgpaConversion,courseCompletion]
+    actions = [graduating,thesis,cgpaConversion,courseCompletion,englishMedium]
 
 @admin.register(Graduating)
 class GraduatingAdmin(admin.ModelAdmin):
@@ -99,6 +104,25 @@ class CourseCompletionAdmin(admin.ModelAdmin):
     )
     def get_url(self, pk):
         url = '/printcc/' + str(CourseCompletion.objects.get(pk=pk).id)
+        return url
+
+    def certificate_actions(self, obj):
+        return format_html  (
+            '<a class="button" href="{}" target="blank_">Print</a>&nbsp;',
+            self.get_url(obj.pk),
+        )
+    certificate_actions.short_description = 'Certificate Actions'
+    certificate_actions.allow_tags = True
+
+@admin.register(English)
+class EnglishAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'student',
+        'certificate_actions',
+    )
+    def get_url(self, pk):
+        url = '/printe/' + str(English.objects.get(pk=pk).id)
         return url
 
     def certificate_actions(self, obj):

@@ -40,3 +40,13 @@ def printCompletion(request,id=None):
             "id"    :id
     }
     return render(request,"print.html",context)
+
+def printEnglish(request,id=None):
+    
+    instance = English.objects.get(id=id)
+    context = {
+            "text"  :instance.text,
+            "date"  :date.today(),
+            "id"    :id
+    }
+    return render(request,"print.html",context)

@@ -136,3 +136,27 @@ class CourseCompletion(models.Model):
     class Meta:
         verbose_name_plural = "Course Completion Certificates"
 
+class English(models.Model):
+    student = models.ForeignKey('Student', on_delete = models.CASCADE)
+    text = models.TextField(default='', blank=True)
+
+    def createText(self):
+        gender = "Mr. " if self.student.gender.lower() == 'm' else "Ms. "
+        pronoun = "He " if gender=="Mr. " else "She "
+        firstDeg=self.student.bitsId[4:6]
+        secondDeg=self.student.bitsId[6:8]
+        branch = BRANCH[firstDeg]
+        if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
+            branch = branch +' and '+ BRANCH[secondDeg]
+        return "This is to certify that this institute permits students to do thesis for a year as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the academic year 2013-2014";
+
+    def save(self, *args, **kwargs):
+        if self.text == '':
+            self.text = self.createText()
+        super(English, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.student.bitsId + ' (' + self.student.name + ')'
+    class Meta:
+        verbose_name_plural = "English Medium Certificates"
+

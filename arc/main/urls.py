@@ -7,6 +7,8 @@ urlpatterns = [
     url(r'printt/(?P<id>\d+)/$',views.printThesis, name="Thesis"),
     url(r'printc/(?P<id>\d+)/$',views.printCGPA, name="CGPA"),
     url(r'printcc/(?P<id>\d+)/$',views.printCompletion, name="Completion"),
+    url(r'printe/(?P<id>\d+)/$',views.printEnglish, name="English"),
+
 
 
 	
