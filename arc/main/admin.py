@@ -32,10 +32,25 @@ def englishMedium(modeladmin, request, queryset):
         if(English.objects.filter(student=student).exists()==False):
             cert=English.objects.create(student=student)   
 
+def fwdContinuing(modeladmin, request, queryset):
+    for student in queryset:
+        if(Continuing.objects.filter(student=student).exists()==False):
+            cert=Continuing.objects.create(student=student) 
+
+def fwdGraduated(modeladmin, request, queryset):
+    for student in queryset:
+        if(Continuing.objects.filter(student=student).exists()==False):
+            cert=Continuing.objects.create(student=student) 
+
+def oneSemesterThesis(modeladmin, request, queryset):
+    for student in queryset:
+        if(ThesisSem.objects.filter(student=student).exists()==False):
+            cert=ThesisSem.objects.create(student=student)  
+
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     search_fields = ['name', 'bitsId','username']
-    actions = [graduating,thesis,cgpaConversion,courseCompletion,englishMedium]
+    actions = [graduating,thesis,cgpaConversion,courseCompletion,englishMedium,fwdContinuing,fwdGraduated,oneSemesterThesis]
 
 @admin.register(Graduating)
 class GraduatingAdmin(admin.ModelAdmin):
@@ -123,6 +138,64 @@ class EnglishAdmin(admin.ModelAdmin):
     )
     def get_url(self, pk):
         url = '/printe/' + str(English.objects.get(pk=pk).id)
+        return url
+
+    def certificate_actions(self, obj):
+        return format_html  (
+            '<a class="button" href="{}" target="blank_">Print</a>&nbsp;',
+            self.get_url(obj.pk),
+        )
+    certificate_actions.short_description = 'Certificate Actions'
+    certificate_actions.allow_tags = True
+
+@admin.register(Continuing)
+class ContinuingAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'student',
+        'certificate_actions',
+    )
+    def get_url(self, pk):
+        url = '/printfc/' + str(Continuing.objects.get(pk=pk).id)
+        return url
+
+    def certificate_actions(self, obj):
+        return format_html  (
+            '<a class="button" href="{}" target="blank_">Print</a>&nbsp;',
+            self.get_url(obj.pk),
+        )
+    certificate_actions.short_description = 'Certificate Actions'
+    certificate_actions.allow_tags = True
+
+@admin.register(Graduated)
+class GraduatedAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'student',
+        'certificate_actions',
+    )
+    def get_url(self, pk):
+        url = '/printfg/' + str(Graduated.objects.get(pk=pk).id)
+        return url
+
+    def certificate_actions(self, obj):
+        return format_html  (
+            '<a class="button" href="{}" target="blank_">Print</a>&nbsp;',
+            self.get_url(obj.pk),
+        )
+    certificate_actions.short_description = 'Certificate Actions'
+    certificate_actions.allow_tags = True
+
+
+@admin.register(ThesisSem)
+class ThesisSemdAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'student',
+        'certificate_actions',
+    )
+    def get_url(self, pk):
+        url = '/printts/' + str(ThesisSem.objects.get(pk=pk).id)
         return url
 
     def certificate_actions(self, obj):

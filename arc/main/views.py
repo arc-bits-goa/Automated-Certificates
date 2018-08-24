@@ -50,3 +50,33 @@ def printEnglish(request,id=None):
             "id"    :id
     }
     return render(request,"print.html",context)
+
+def printContinuing(request,id=None):
+    
+    instance = Continuing.objects.get(id=id)
+    context = {
+            "text"  :instance.text,
+            "date"  :date.today(),
+            "id"    :id
+    }
+    return render(request,"print.html",context)
+
+def printGraduated(request,id=None):
+    
+    instance = Graduated.objects.get(id=id)
+    context = {
+            "text"  :instance.text,
+            "date"  :date.today(),
+            "id"    :id
+    }
+    return render(request,"print.html",context)
+
+def printSem(request,id=None):
+    
+    instance = ThesisSem.objects.get(id=id)
+    context = {
+            "text"  :instance.text,
+            "date"  :date.today(),
+            "id"    :id
+    }
+    return render(request,"print.html",context)
