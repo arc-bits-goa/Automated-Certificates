@@ -39,8 +39,8 @@ def fwdContinuing(modeladmin, request, queryset):
 
 def fwdGraduated(modeladmin, request, queryset):
     for student in queryset:
-        if(Continuing.objects.filter(student=student).exists()==False):
-            cert=Continuing.objects.create(student=student) 
+        if(Graduated.objects.filter(student=student).exists()==False):
+            cert=Graduated.objects.create(student=student) 
 
 def oneSemesterThesis(modeladmin, request, queryset):
     for student in queryset:

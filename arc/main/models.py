@@ -100,7 +100,7 @@ class CGPAConversion(models.Model):
         branch = BRANCH[firstDeg]
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
-        return "This is to certify that this institute permits students to do thesis for a year as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the academic year 2013-2014";
+        return "This is to certify that "+self.student.name+", ID No. "+self.student.bitsId + " has obtained a CGPA "+self.student.cgpa +" at the end of second semester 2016-2017. This is equivalent to "+pronoun+" based on the formula used by the institution for the conversion of CGPA of a candidate into equivalent percentage.<br><br>Equivalent percentage = (CGPA obtained/10*) x 100<br>*Maximum CGPA"
 
     def save(self, *args, **kwargs):
         if self.text == '':
@@ -124,7 +124,7 @@ class CourseCompletion(models.Model):
         branch = BRANCH[firstDeg]
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
-        return "This is to certify that this institute permits students to do thesis for a year as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the academic year 2013-2014";
+        return "This is to certify that "+self.student.name+", ID No. "+self.student.bitsId + " is a final year student of this institute and has completed all the course requirements of B.E(Hons.) Computer Science Engineering at the end of first semester 2017-2018."
 
     def save(self, *args, **kwargs):
         if self.text == '':
@@ -148,7 +148,7 @@ class English(models.Model):
         branch = BRANCH[firstDeg]
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
-        return "This is to certify that this institute permits students to do thesis for a year as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the academic year 2013-2014";
+        return "This is to certify that "+self.student.name+", ID No. "+self.student.bitsId + " is a student of "+branch +" of the institute.<br>English is the sole medium of instruction in the institute."
 
     def save(self, *args, **kwargs):
         if self.text == '':
@@ -172,8 +172,7 @@ class Continuing(models.Model):
         branch = BRANCH[firstDeg]
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
-        return "This is to certify that this institute permits students to do thesis for a year as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the academic year 2013-2014";
-
+        return "Please find attached the true copy of the transcripts of "+self.student.name +" ID No. "+self.student.bitsId+" who is a student of "+branch+ " of this institute."
     def save(self, *args, **kwargs):
         if self.text == '':
             self.text = self.createText()
@@ -196,7 +195,7 @@ class Graduated(models.Model):
         branch = BRANCH[firstDeg]
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
-        return "This is to certify that this institute permits students to do thesis for a year as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the academic year 2013-2014";
+        return "Please find attached the true copy of the transcripts of "+self.student.name +" ID No. "+self.student.bitsId+" who is a student of "+branch+ " of this institute."
 
     def save(self, *args, **kwargs):
         if self.text == '':
@@ -220,7 +219,7 @@ class ThesisSem(models.Model):
         branch = BRANCH[firstDeg]
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
-        return "This is to certify that this institute permits students to do thesis for a year as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the academic year 2013-2014";
+        return "This is to certify that this institute permits students to do thesis for a semester as part of their course curriculum. The following bonafide student of BITS, Pilani K.K Birla Goa Campus student will be doing an off campus thesis for the Semester 1 2018-2019";
 
     def save(self, *args, **kwargs):
         if self.text == '':
