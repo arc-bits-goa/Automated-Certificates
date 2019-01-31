@@ -50,7 +50,7 @@ def oneSemesterThesis(modeladmin, request, queryset):
 
 @admin.register(Student)
 class StudentAdmin(ImportExportActionModelAdmin):
-    search_fields = ['name', 'bitsId','username']
+    search_fields = ['name', 'bitsId',]
     actions = [graduating,thesis,cgpaConversion,courseCompletion,englishMedium,fwdContinuing,fwdGraduated,oneSemesterThesis]
 
 @admin.register(Graduating)

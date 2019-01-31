@@ -58,11 +58,17 @@ class Graduating(models.Model):
         firstDeg=self.student.bitsId[4:6]
         secondDeg=self.student.bitsId[6:8]
         branch = BRANCH[firstDeg]
+        yearOfPassing=self.student.bitsId[0:4];
+        yearOfPassing=int(yearOfPassing)+4;
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
+            yearOfPassing=int(yearOfPassing)+1;
+
+        yearOfPassing=str(yearOfPassing)
+
         # text=Text.objects.filter(title=Graduating.__name__)
         # return text[0].text
-        return "This is to certify that "+self.student.name+", ID No. "+self.student.bitsId + " is a student of "+branch +" of the institute. "+pronoun+" is likely to be graduated in July 2018 from our institute after completing all the course requirements at the end of second semester 2017-2018."
+        return "This is to certify that "+self.student.name+", ID No. "+self.student.bitsId + " is a student of "+branch +" of the institute. "+pronoun+" is likely to be graduated in July "+yearOfPassing+" from our institute after completing all the course requirements at the end of second semester "+str(int(yearOfPassing)-1)+"-"+yearOfPassing+"."
         return 
     def save(self, *args, **kwargs):
         if self.text == '':
