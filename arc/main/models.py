@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 
+
 BRANCH = {
     'A1': 'B.E.(Hons) Chemical Engineering',
     'A3': 'B.E.(Hons) Electrical and Electronics Engineering',
@@ -32,6 +33,13 @@ STUDENT_STATUS = (
     ('PS2', 'PS2'),
     ('Graduate', 'Graduate'))
 
+# class Text(models.Model):
+#     title = models.CharField(max_length=50,null=True)
+#     text = models.TextField(default='', blank=True)
+#     def __str__(self):
+#         return self.title
+
+
 class Student(models.Model):    
     name = models.CharField(max_length=50,null=True)
     bitsId = models.CharField(max_length=15,null=True)
@@ -53,8 +61,10 @@ class Graduating(models.Model):
         branch = BRANCH[firstDeg]
         if secondDeg != 'PS' and firstDeg != 'H1' and firstDeg != 'PH':
             branch = branch +' and '+ BRANCH[secondDeg]
+        # text=Text.objects.filter(title=Graduating.__name__)
+        # return text[0].text
         return "This is to certify that "+self.student.name+", ID No. "+self.student.bitsId + " is a student of "+branch +" of the institute. "+pronoun+" is likely to be graduated in July 2018 from our institute after completing all the course requirements at the end of second semester 2017-2018."
-
+        return 
     def save(self, *args, **kwargs):
         if self.text == '':
             self.text = self.createText()

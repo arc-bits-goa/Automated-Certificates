@@ -4,10 +4,12 @@ from datetime import datetime,date
 def printGraduating(request,id=None):
 
     instance = Graduating.objects.get(id=id)
+    student = instance.student
     context = {
             "text"  :instance.text,
             "date"  :date.today(),
-            "id"    :id
+            "id"    :id,
+            "student": student
     }
     return render(request,"print.html",context)
 

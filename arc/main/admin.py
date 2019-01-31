@@ -3,9 +3,10 @@ from main.models import *
 from django.contrib.auth.models import Group,User
 from django.shortcuts import render
 from django.utils.html import format_html
-
+from import_export.admin import ImportExportActionModelAdmin
 
 admin.site.unregister(Group)
+# admin.site.register(Text)
 
 def graduating(modeladmin, request, queryset):
     for student in queryset:
@@ -48,7 +49,7 @@ def oneSemesterThesis(modeladmin, request, queryset):
             cert=ThesisSem.objects.create(student=student)  
 
 @admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
+class StudentAdmin(ImportExportActionModelAdmin):
     search_fields = ['name', 'bitsId','username']
     actions = [graduating,thesis,cgpaConversion,courseCompletion,englishMedium,fwdContinuing,fwdGraduated,oneSemesterThesis]
 
