@@ -43,7 +43,6 @@ STUDENT_STATUS = (
 class Student(models.Model):    
     name = models.CharField(max_length=50,null=True)
     bitsId = models.CharField(max_length=15,null=True)
-    username = models.CharField(max_length=10,null=True)
     gender = models.CharField(max_length=1, blank=True)
     cgpa = models.FloatField(blank=True, null=True)
 
