@@ -48,6 +48,20 @@ class Student(models.Model):
 
     def __str__(self):
         return self.bitsId + ' (' + self.name + ')'
+
+class Graduated_Students(models.Model):    
+    name = models.CharField(max_length=50,null=True)
+    campusid = models.CharField(max_length=15,null=True)
+    gender = models.CharField(max_length=1, blank=True)
+    cgpa = models.FloatField(blank=True, null=True)
+    division = models.CharField(max_length=10,null=True)
+    year = models.CharField(max_length=10,null=True)
+    semester = models.CharField(max_length=2,null=True);
+    def __str__(self):
+        return self.campusid + ' (' + self.name + ')'
+    class Meta:
+        verbose_name_plural = "Graduated Students"
+
 class Graduating(models.Model):
     student = models.ForeignKey('Student', on_delete = models.CASCADE)
     text = models.TextField(default='', blank=True)

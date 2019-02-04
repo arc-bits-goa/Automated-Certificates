@@ -53,6 +53,10 @@ class StudentAdmin(ImportExportActionModelAdmin):
     search_fields = ['name', 'bitsId',]
     actions = [graduating,thesis,cgpaConversion,courseCompletion,englishMedium,fwdContinuing,fwdGraduated,oneSemesterThesis]
 
+@admin.register(Graduated_Students)
+class GraduatedAdmin(ImportExportActionModelAdmin):
+    search_fields = ['name', 'campusid',]
+
 @admin.register(Graduating)
 class GraduatingAdmin(admin.ModelAdmin):
     list_display = (
