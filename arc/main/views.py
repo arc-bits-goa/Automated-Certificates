@@ -39,7 +39,8 @@ def printCompletion(request,id=None):
     context = {
             "text"  :instance.text,
             "date"  :date.today(),
-            "id"    :id
+            "id"    :id,
+            "student": instance.student,
     }
     return render(request,"print.html",context)
 
