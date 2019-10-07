@@ -21,32 +21,53 @@ div.container3 p {
    transform: translate(0, -50%) } 
     body {
     height: 842px;
-    width: 595px;
+    width: 835px;
     margin-left: auto;
     margin-right: auto;
     }
-#letterhead{
-  line-height:0.1;
-}
 #footer{
   position:absolute;
   bottom:0;
-  width: 595px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 835px;
+  margin-left: auto;
+  margin-right: auto;
 }
-</style> 
+#letterhead, #content {
+  font-family: TimesNewRoman;
+  font-size: 18px;
+  font-style: normal;
+}
+#letterhead {
+  text-align: center;
+}
+.logo {
+    float: left
+}
+.logo img {
+    display: block
+}
+.footer-text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
 <div id="letterhead">
-  <img src="{% static 'img/header.jpg' %}" width=595px>
+  <div class="logo">
+    <img src="{% static 'img/logo.png' %}">
+  </div>
+  <h2>Birla Institute of Technology and Science, Pilani<br>
+    K. K. Birla Goa Campus</h2>
+  <h4>Zuarinagar, Goa, 403726, India</h4>
 </div>
 <hr>
-</head>
-<body bgcolor="white">
 <div id="content" >
     <div class="top">
       <h3 class="ref" align="left">
-        Prof Neena Goves
-        <span style="float:right;"> Fax=: 91-832-2557033 </span>
+        Prof Neena Goveas
+        <span style="float:right;"> Fax: 91-832-2557033 </span>
         <br>
         Associate Professor, CS
         <span style="float:right;">Phone: 91-832-2580403 (O)</span>
@@ -59,7 +80,7 @@ div.container3 p {
         <br>
         Counselling Division
         <br><br>
-        Ref. No. ARC/{{ id }}<span style="float:right;">Date:{{ date|date:"d-F-Y"  }}</span></h3>
+        Ref. No. ARC/II/18-19/{{ student.bitsId }}<span style="float:right;">Date:{{ date|date:"d-F-Y"  }}</span></h3>
     </div>
     <h2 align="center"><u>CERTIFICATE</u></h1>
     <font size="5">
@@ -74,5 +95,11 @@ div.container3 p {
     <span style="float:left;">Office Seal:</span>
     </font>
 </div>  
+<div id="footer">
+<hr>
+<p class="footer-text">
+(BITS Pilani - A Deemed University established under section 3 of the UGC Act. 1956 under notification no. F.12-23/63.U-2 dated 18th June, 1964)
+</p>
+</div>
 </body>
 </html>
