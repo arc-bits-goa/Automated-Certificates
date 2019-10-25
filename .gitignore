@@ -109,3 +109,4 @@ arc/arc.sublime-project
 arc/arc.sublime-workspace
 arc/tools/
 arc/main/migrations/
+arc/.vscode/
