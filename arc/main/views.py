@@ -19,7 +19,9 @@ def printThesis(request,id=None):
     context = {
             "text"  :instance.text,
             "date"  :date.today(),
-            "id"    :id
+            "id"    :id,
+            "student": instance.student,
+            "thesis": True
     }
     return render(request,"print.html",context)
 
