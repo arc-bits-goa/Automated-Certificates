@@ -16,18 +16,19 @@
 div.container3 {
   height: 10;
   position: relative 
-  }
+}
 div.container3 p {
-   margin: 0;
-   position: absolute;
-   top: 50%;
-   transform: translate(0, -50%) } 
-    body {
-    height: 842px;
-    width: 835px;
-    margin-left: auto;
-    margin-right: auto;
-    }
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%)
+} 
+body {
+  height: 842px;
+  width: 835px;
+  margin-left: auto;
+  margin-right: auto;
+}
 #footer{
   position:absolute;
   bottom:0;
@@ -49,6 +50,15 @@ div.container3 p {
 .logo img {
     display: block
 }
+.thesis-table {
+  border: 1px black solid;
+  border-collapse: collapse;
+  width: 70%;
+}
+.thesis-table-cell {
+  border: 1px solid black;
+  padding: 15px;
+}
 .footer-text {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 10px;
@@ -58,19 +68,37 @@ div.container3 p {
 </head>
 <body>
 <div id="letterhead">
-  <div class="logo">
-    <img src="{% static 'img/logo.png' %}">
-  </div>
-  <h2>Birla Institute of Technology and Science, Pilani<br>
-    K. K. Birla Goa Campus</h2>
-  <h4>Zuarinagar, Goa, 403726, India</h4>
+  <table>
+      <tr>
+          <td>
+          <div class="logo">
+              <img src="{% static 'img/logo.png' %}">
+          </div>  
+          </td>
+          <td style="padding-left: 40px;">
+          <h2>Birla Institute of Technology and Science, Pilani<br>
+            K. K. Birla Goa Campus
+          </h2>  
+          </td>
+      </tr>
+      <tr>
+          <td>
+            
+          </td>
+          <td>
+            <h4>Zuarinagar, Goa, 403726, India</h4>          
+          </td>
+      </tr>
+  </table>
 </div>
 <hr>
 <div id="content" >
     <div class="top">
       <h3 class="ref" align="left">
         Prof Neena Goveas
-        <span style="float:right;"> Fax: 91-832-2557033 </span>
+        <span style="float:right;"> 
+          Fax: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;91-832-2557033
+        </span>
         <br>
         Associate Professor, CS
         <span style="float:right;">Phone: 91-832-2580403 (O)</span>
@@ -78,12 +106,14 @@ div.container3 p {
         Associate Dean, 
         <span style="float:right;">91-832-2580336 (O)</span>
         <br>
-        Academic Registration & 
+        Academic Undergraduate
         <span style="float:right;">Email: neena@goa.bits-pilani.ac.in</span>
         <br>
-        Counselling Division
-        <br><br>
-        Ref. No. ARC/II/18-19/{{ student.bitsId }}<span style="float:right;">Date:{{ date|date:"d-F-Y"  }}</span></h3>
+        Studies Division
+    </h3>
+    <p>
+        Ref. No. ARC/II/18-19/{{ student.bitsId }}<span style="float:right;">Dated: {{ date|date:"d-F-Y"  }}</span>
+    </p>
     </div>
     <h2 align="center"><u>CERTIFICATE</u></h1>
     <font size="5">
@@ -91,6 +121,18 @@ div.container3 p {
       {{ text | safe | linebreaks}}
     </p>
     </font>
+    {% if thesis %}
+    <table class="thesis-table">
+      <tr>
+        <td class="thesis-table-cell">
+          {{ student.name }}
+        </td>
+        <td class="thesis-table-cell">
+          {{ student.bitsId }}
+        </td>
+      </tr>
+    </table>
+    {% endif %}
     <br><br><br>
     <p>
     <span style="float:left;">Signature of The Authority:</span>
