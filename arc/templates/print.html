@@ -6,52 +6,10 @@
 <style type="text/css" media="print">
 @page {
     size: auto;   
-    margin: 0px; 
+    margin: 0; 
 }
 </style>
 <style>
-body {
-    display: block;
-    font-family: 'Times New Roman', Times, serif;
-    margin: auto;
-    height: 842px;
-    width: 800px;
-}
-.logo img {
-    width: 2.88cm;
-    height: 2.47cm;
-    float: left;
-}
-table {
-  width: 100%;
-  border-top: 1px solid black;
-  font-weight: bold;
-  padding-top: 20px;
-}
-tr td:nth-of-type(1) {
- text-align:left;
-}
-tr td:nth-of-type(2) {
- text-align:right;
-}
-.cert-heading {
-    text-decoration: underline black;
-    text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-    padding: 20px;
-}
-.cert-ref {
-    padding-top: 25px;
-    font-weight: normal;
-}
-.cert-text {
-    font-size: 10px;
-}
-#letterhead .content {
-    text-align: center;
-    font-size: 18px;
-}
 #content {
   padding: 0 40px;
 }
@@ -63,8 +21,13 @@ div.container3 p {
    margin: 0;
    position: absolute;
    top: 50%;
-   transform: translate(0, -50%)
-} 
+   transform: translate(0, -50%) } 
+    body {
+    height: 842px;
+    width: 835px;
+    margin-left: auto;
+    margin-right: auto;
+    }
 #footer{
   position:absolute;
   bottom:0;
@@ -72,11 +35,24 @@ div.container3 p {
   margin-left: auto;
   margin-right: auto;
 }
-.footer-text {
-  font-family: Verdana;
-  font-size: 14px;
+#letterhead, #content {
+  font-family: TimesNewRoman;
+  font-size: 18px;
+  font-style: normal;
+}
+#letterhead {
   text-align: center;
-  border-top: 1px solid black;
+}
+.logo {
+    float: left
+}
+.logo img {
+    display: block
+}
+.footer-text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+  text-align: center;
 }
 </style>
 </head>
@@ -85,75 +61,47 @@ div.container3 p {
   <div class="logo">
     <img src="{% static 'img/logo.png' %}">
   </div>
-  <div class="content">
-    <h2>Birla Institute of Technology and Science, Pilani
-    <br>K. K. Birla Goa Campus</h2>
-    <p class="cert-addr">Zuarinagar, Goa, 403726, India</p>
-  </div>
+  <h2>Birla Institute of Technology and Science, Pilani<br>
+    K. K. Birla Goa Campus</h2>
+  <h4>Zuarinagar, Goa, 403726, India</h4>
 </div>
-<div id="content">
-  <table>
-    <tr>
-      <td>
-        Prof. Neena Goveas
-      </td>
-      <td>
-        Fax: 91-832-2557033 
-      </td>
-    </tr>
-    <tr>
-      <td>
+<hr>
+<div id="content" >
+    <div class="top">
+      <h3 class="ref" align="left">
+        Prof Neena Goveas
+        <span style="float:right;"> Fax: 91-832-2557033 </span>
+        <br>
+        Associate Professor, CS
+        <span style="float:right;">Phone: 91-832-2580403 (O)</span>
+        <br>
         Associate Dean, 
-      </td>
-      <td>
-        Phone: 91-832-2580403 (O)
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Academic - 
-      </td>
-      <td>
-        91-832-2580336 (O)
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Undergraduate Studies Division
-      </td>
-      <td>
-        Email: neena@goa.bits-pilani.ac.in
-      </td>
-    </tr>
-    <tr></tr>
-    <tr>
-      <td>
-        <div class="cert-ref">
-          Ref. No. AUGSD/II/18-19/{{ student.bitsId }}
-        </div>
-      </td>
-      <td>
-        <div class="cert-ref">
-          Dated: {{ date|date:"d-F-Y" }}
-        </div>
-      </td>
-    </tr>
-  </table>
-    <div class="cert-heading">CERTIFICATE</div>
-    <p class="cert-text">
-      {{ text | safe | linebreaks }}
+        <span style="float:right;">91-832-2580336 (O)</span>
+        <br>
+        Academic Registration & 
+        <span style="float:right;">Email: neena@goa.bits-pilani.ac.in</span>
+        <br>
+        Counselling Division
+        <br><br>
+        Ref. No. ARC/II/18-19/{{ student.bitsId }}<span style="float:right;">Date:{{ date|date:"d-F-Y"  }}</span></h3>
+    </div>
+    <h2 align="center"><u>CERTIFICATE</u></h1>
+    <font size="5">
+    <p line-height =200%>
+      {{ text | safe | linebreaks}}
     </p>
+    </font>
     <br><br><br>
     <p>
     <span style="float:left;">Signature of The Authority:</span>
     <br><br><br><br><br><br>
     <span style="float:left;">Office Seal:</span>
-    </p>
+    </font>
 </div>  
 <div id="footer">
+<hr>
 <p class="footer-text">
-(BITS Pilani - A Deemed University established under section 3 of the UGC Act. 1956 <br>
-under notification no. F.12-23/63.U-2 dated 18th June, 1964)
+(BITS Pilani - A Deemed University established under section 3 of the UGC Act. 1956 under notification no. F.12-23/63.U-2 dated 18th June, 1964)
 </p>
 </div>
 </body>

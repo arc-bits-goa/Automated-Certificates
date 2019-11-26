@@ -17,7 +17,6 @@ def printThesis(request,id=None):
 	
     instance = Thesis.objects.get(id=id)
     context = {
-            "student":instance.student,
             "text"  :instance.text,
             "date"  :date.today(),
             "id"    :id
@@ -28,7 +27,6 @@ def printCGPA(request,id=None):
     
     instance = CGPAConversion.objects.get(id=id)
     context = {
-            "student":instance.student,
             "text"  :instance.text,
             "date"  :date.today(),
             "id"    :id
@@ -39,7 +37,6 @@ def printCompletion(request,id=None):
     
     instance = CourseCompletion.objects.get(id=id)
     context = {
-            "student":instance.student,
             "text"  :instance.text,
             "date"  :date.today(),
             "id"    :id,
@@ -51,7 +48,6 @@ def printEnglish(request,id=None):
     
     instance = English.objects.get(id=id)
     context = {
-            "student":instance.student,
             "text"  :instance.text,
             "date"  :date.today(),
             "id"    :id
@@ -62,7 +58,6 @@ def printContinuing(request,id=None):
     
     instance = Continuing.objects.get(id=id)
     context = {
-            "student":instance.student,
             "text"  :instance.text,
             "date"  :date.today(),
             "id"    :id
@@ -73,7 +68,6 @@ def printGraduated(request,id=None):
     
     instance = Graduated.objects.get(id=id)
     context = {
-            "student":instance.student,
             "text"  :instance.text,
             "date"  :date.today(),
             "id"    :id
@@ -84,7 +78,6 @@ def printSem(request,id=None):
     
     instance = ThesisSem.objects.get(id=id)
     context = {
-            "student":instance.student,
             "text"  :instance.text,
             "date"  :date.today(),
             "id"    :id
