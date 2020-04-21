@@ -6,7 +6,7 @@
 <style type="text/css" media="print">
 @page {
     size: auto;   
-    margin: 0px; 
+    margin: 10px; 
 }
 </style>
 <style>
@@ -18,21 +18,30 @@ body {
     width: 800px;
 }
 .logo img {
-    width: 2.88cm;
-    height: 2.47cm;
+    width: 3cm;
+    height: 2.8cm;
     float: left;
+    padding-left: 40px;
 }
 table {
   width: 100%;
   border-top: 1px solid black;
   font-weight: bold;
   padding-top: 20px;
+  border-collapse: collapse;
 }
 tr td:nth-of-type(1) {
  text-align:left;
 }
 tr td:nth-of-type(2) {
  text-align:right;
+}
+.blank-row{
+    height: 20px;
+}
+.cert-addr
+{
+    padding-right: 60px;
 }
 .cert-heading {
     text-decoration: underline black;
@@ -46,11 +55,15 @@ tr td:nth-of-type(2) {
     font-weight: normal;
 }
 .cert-text {
-    font-size: 10px;
+    font-size: 22px;
 }
 #letterhead .content {
     text-align: center;
     font-size: 18px;
+}
+#letterhead .content h2{
+    margin-bottom: -12px;
+    padding-right: 60px;
 }
 #content {
   padding: 0 40px;
@@ -68,7 +81,7 @@ div.container3 p {
 #footer{
   position:absolute;
   bottom:0;
-  width: 835px;
+  width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -83,16 +96,21 @@ div.container3 p {
 <body>
 <div id="letterhead">
   <div class="logo">
+    <br>
     <img src="{% static 'img/logo.png' %}">
   </div>
   <div class="content">
-    <h2>Birla Institute of Technology and Science, Pilani
+    <h2>Birla Institute of Technology and Science-Pilani
     <br>K. K. Birla Goa Campus</h2>
-    <p class="cert-addr">Zuarinagar, Goa, 403726, India</p>
+    <p class="cert-addr">Zuarinagar, Goa 403726, India</p>
   </div>
 </div>
 <div id="content">
   <table>
+    <tr class="blank-row">
+    <td colspan="2">
+    </td>
+    </tr>
     <tr>
       <td>
         Prof. Neena Goveas
@@ -103,7 +121,7 @@ div.container3 p {
     </tr>
     <tr>
       <td>
-        Associate Dean, 
+        Associate Dean 
       </td>
       <td>
         Phone: 91-832-2580403 (O)
@@ -111,7 +129,7 @@ div.container3 p {
     </tr>
     <tr>
       <td>
-        Academic - 
+        Academic- 
       </td>
       <td>
         91-832-2580336 (O)
@@ -129,31 +147,36 @@ div.container3 p {
     <tr>
       <td>
         <div class="cert-ref">
-          Ref. No. AUGSD/II/18-19/{{ student.bitsId }}
+          Ref. No. AUGSD/{{ reftext }}/{{ student.bitsId }}
         </div>
       </td>
       <td>
         <div class="cert-ref">
-          Dated: {{ date|date:"d-F-Y" }}
+          Dated: {{ date }}
         </div>
       </td>
     </tr>
   </table>
+    <br>
     <div class="cert-heading">CERTIFICATE</div>
-    <p class="cert-text">
+    <div class = "cert-text">
+    <br>
+    <p>
       {{ text | safe | linebreaks }}
     </p>
     <br><br><br>
     <p>
-    <span style="float:left;">Signature of The Authority:</span>
+    <span style="float:left;">Signature of the Authority:</span>
     <br><br><br><br><br><br>
     <span style="float:left;">Office Seal:</span>
     </p>
+    </div>
 </div>  
 <div id="footer">
 <p class="footer-text">
+<br>
 (BITS Pilani - A Deemed University established under section 3 of the UGC Act. 1956 <br>
-under notification no. F.12-23/63.U-2 dated 18th June, 1964)
+under notification no. F.12-23/63.U-2 dated 18<sup>th</sup> June, 1964)
 </p>
 </div>
 </body>
